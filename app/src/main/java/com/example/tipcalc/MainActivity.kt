@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.calculateButton.setOnClickListener{ calculateTip() }
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
+
+        displayTip(0.0)
+        displayTotalCost(0.0)
     }
 
     private fun calculateTip() {
