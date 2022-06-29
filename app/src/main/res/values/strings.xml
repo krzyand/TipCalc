@@ -7,4 +7,5 @@
     <string name="ok_15">OK (15%)</string>
     <string name="service_mark">How was the service?</string>
     <string name="cost_of_service">Cost of Service</string>
+    <string name="total_cost">Total cost: %s</string>
 </resources>

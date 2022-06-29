@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         val cost = stringInTextField.toDoubleOrNull()
         if (cost == null) {
             displayTip(0.0)
+            displayTotalCost(0.0)
             return
         }
 
@@ -44,13 +45,20 @@ class MainActivity : AppCompatActivity() {
 
         // Display the formatted tip value on screen
         displayTip(tip)
-
-
+        val total = cost + tip
+        displayTotalCost(total)
     }
+
     private fun displayTip(tip: Double) {
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
+
+    private fun displayTotalCost(total: Double) {
+        val formattedTotal = NumberFormat.getCurrencyInstance().format(total)
+        binding.totalCost.text = getString(R.string.total_cost, formattedTotal)
+    }
+
     private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
         if (keyCode == KeyEvent.KEYCODE_ENTER) {
             // Hide the keyboard
