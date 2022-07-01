@@ -20,10 +20,22 @@ class CalculatorTests {
     val activity = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
+    fun calculate_10_percent_tip() {
+        onView(withId(R.id.cost_of_service_edit_text))
+            .perform(typeText("50.00"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("$5.00"))))
+    }
+    @Test
     fun calculate_20_percent_tip() {
         onView(withId(R.id.cost_of_service_edit_text))
             .perform(typeText("50.00"))
             .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.option_twenty_percent))
+            .perform(click())
         onView(withId(R.id.calculate_button))
             .perform(click())
         onView(withId(R.id.tip_result))
@@ -49,6 +61,6 @@ class CalculatorTests {
         onView(withId(R.id.calculate_button))
             .perform(click())
         onView(withId(R.id.total_cost))
-            .check(matches(withText(containsString("$60.00"))))
+            .check(matches(withText(containsString("$55.00"))))
     }
 }
